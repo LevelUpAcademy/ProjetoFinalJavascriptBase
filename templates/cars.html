@@ -1,0 +1,43 @@
+<div class="panel panel-default">
+  <div class="panel-heading">Carros cadastrados</div>
+  <div class="panel-body">
+    <p>Nesta seção são exibidos os carros cadastrados no sistema</p>
+    <a class="btn btn-primary" href="/#!/carros/novo">Cadastrar</a>
+  </div>
+  <label>{{message}}</label>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Placa</th>
+        <th>Modelo</th>
+        <th>Cor</th>
+        <th>Proprietario</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="car in cars">
+        <td>{{car.plate}}</td>
+        <td>{{car.model}}</td>
+        <td>{{car.color}}</td>
+        <td>{{car.owner}}</td>
+        <td>
+          <!-- Split button -->
+          <div class="btn-group">
+            <button type="button" class="btn btn-primary">Ação</button>
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span class="caret"></span>
+              <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <ul class="dropdown-menu">
+              <li><a href="/#!/carros/detalhe/{{car.id}}">Ver</a></li>
+              <li><a href="/#!/carros/editar/{{car.id}}">Editar</a></li>
+              <li><a href="/#!/carros/excluir/{{car.id}}">Excluir</a></li>
+            </ul>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+
+  </table>
+</div>

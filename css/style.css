@@ -1,0 +1,12 @@
+.clear{
+  clear:both;
+}
+
+.top-menu{
+  width: 100%;
+}
+
+.top-menu a{
+  float: left;
+
+}
