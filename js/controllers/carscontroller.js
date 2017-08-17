@@ -35,3 +35,19 @@ app.controller('CarsNewController', function($scope, $http){
     })
   }
 })
+
+app.controller('CarsDetailsController', function($scope, $http, $routeParams){
+  $scope.car = {}
+  $http({
+    method: 'GET',
+    url: 'https://aulasjavascript.herokuapp.com/cars/' + $routeParams.id
+  })
+  .then(function(data){
+    console.log(data.data)
+    $scope.car = data.data
+  },
+  function(err){
+    alert('Ocorreu um erro!')
+    console.log(err)
+  })
+})

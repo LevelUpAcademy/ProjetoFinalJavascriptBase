@@ -15,6 +15,10 @@ app.config(function($routeProvider, $locationProvider) {
       templateUrl: 'templates/newcar.html',
       controller: 'CarsNewController'
     })
+    .when('/carros/detalhe/:id', {
+      templateUrl: 'templates/detailscar.html',
+      controller: 'CarsDetailsController'
+    })
     .otherwise({
       redirectTo: '/carros'
     });

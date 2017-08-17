@@ -1,0 +1,31 @@
+<h1>Detalhes do Carro</h1>
+
+<!-- <pre>{{xxx}}</pre>
+<input type="text" ng-model="xxx.propriedade.primeiro">
+<input type="text" ng-model="xxx.propriedade.segundo"> -->
+
+<!-- <pre>{{obj}}</pre> -->
+<div class="form-group">
+  <label for="" class="form-label">Placa</label>
+  <p class="form-control">{{car.plate}}</p>
+</div>
+
+<div class="form-group">
+  <label for="" class="form-label">Modelo</label>
+    <p class="form-control">{{car.model}}</p>
+</div>
+
+<div class="form-group">
+  <label for="" class="form-label">Cor</label>
+  <p class="form-control">{{car.color}}</p>
+</div>
+
+<div class="form-group">
+  <label for="" class="form-label">Proprietario</label>
+  <p class="form-control">{{car.owner}}</p>
+</div>
+
+<div class="form-group">
+  <a ng-click="SaveCar()" class="btn btn-primary">Salvar</a>
+  <a href="/#!/carros" class="btn btn-default">Cancelar</a>
+</div>
