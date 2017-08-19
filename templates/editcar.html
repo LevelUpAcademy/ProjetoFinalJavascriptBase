@@ -1,4 +1,4 @@
-<h1>Detalhes do Carro</h1>
+<h1>Cadastro de Carro</h1>
 
 <!-- <pre>{{xxx}}</pre>
 <input type="text" ng-model="xxx.propriedade.primeiro">
@@ -7,24 +7,25 @@
 <!-- <pre>{{obj}}</pre> -->
 <div class="form-group">
   <label for="" class="form-label">Placa</label>
-  <p class="form-control">{{car.plate}}</p>
+  <input type="text" ng-model="car.plate" class="form-control">
 </div>
 
 <div class="form-group">
   <label for="" class="form-label">Modelo</label>
-    <p class="form-control">{{car.model}}</p>
+  <input type="text" ng-model="car.model" class="form-control">
 </div>
 
 <div class="form-group">
   <label for="" class="form-label">Cor</label>
-  <p class="form-control">{{car.color}}</p>
+  <input type="text" ng-model="car.color" class="form-control">
 </div>
 
 <div class="form-group">
   <label for="" class="form-label">Proprietario</label>
-  <p class="form-control">{{car.owner}}</p>
+  <input type="text" ng-model="car.owner" class="form-control">
 </div>
 
 <div class="form-group">
-  <a href="/#!/carros" class="btn btn-default">Voltar</a>
+  <a ng-click="save()" class="btn btn-primary">Salvar</a>
+  <a href="/#!/carros" class="btn btn-default">Cancelar</a>
 </div>

@@ -15,9 +15,13 @@ app.config(function($routeProvider, $locationProvider) {
       templateUrl: 'templates/newcar.html',
       controller: 'CarsNewController'
     })
-    .when('/carros/detalhe/:id', {
+    .when('/carros/detalhe/:xpto', {
       templateUrl: 'templates/detailscar.html',
       controller: 'CarsDetailsController'
+    })
+    .when('/carros/editar/:idcar', {
+      templateUrl: 'templates/editcar.html',
+      controller: 'CarsEditController'
     })
     .otherwise({
       redirectTo: '/carros'

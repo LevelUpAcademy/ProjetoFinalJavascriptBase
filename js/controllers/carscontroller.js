@@ -38,9 +38,10 @@ app.controller('CarsNewController', function($scope, $http){
 
 app.controller('CarsDetailsController', function($scope, $http, $routeParams){
   $scope.car = {}
+
   $http({
     method: 'GET',
-    url: 'https://aulasjavascript.herokuapp.com/cars/' + $routeParams.id
+    url: 'https://aulasjavascript.herokuapp.com/cars/' + $routeParams.xpto
   })
   .then(function(data){
     console.log(data.data)
@@ -50,4 +51,37 @@ app.controller('CarsDetailsController', function($scope, $http, $routeParams){
     alert('Ocorreu um erro!')
     console.log(err)
   })
+})
+
+app.controller('CarsEditController', function($http, $scope, $routeParams){
+  $scope.car = {}
+
+  $http({
+    method: 'GET',
+    url: 'https://aulasjavascript.herokuapp.com/cars/' + $routeParams.idcar
+  })
+  .then(function(data){
+    $scope.car = data.data
+  },
+  function(erro){
+    alert('Erro!')
+    console.log(erro)
+  })
+
+  $scope.save = function(){
+    console.log("entrou")
+    $http({
+      method: 'PUT',
+      url: 'https://aulasjavascript.herokuapp.com/cars/' + $routeParams.idcar,
+      data: $scope.car
+    })
+    .then(function(data){
+      window.location.href = "/#!/carros"
+    },
+  function(erro){
+    alert('Erro!')
+    console.log(erro)
+  })
+  }
+
 })
