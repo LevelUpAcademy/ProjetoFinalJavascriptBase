@@ -6,29 +6,30 @@
       <h2>Selecione a placa:</h2>
     </div>
     <div class="col-md-2">
-      <select class="form-control" name="">
-        <option value="">Selecione...</option>
-        <option ng-repeat="c in cars" value="c.id">{{c.plate}}</option>
+      <select ng-model="selectedCar" class="form-control" name="">
+        <option value="-1">Selecione...</option>
+        <option ng-repeat="c in cars" value="{{c.id}}">{{c.plate}}</option>
       </select>
     </div>
     <div class="col-md-2">
-      <a href="#" class="btn btn-default">Pesquisar</a>
+      <a ng-click="Search()" class="btn btn-default">Pesquisar</a>
     </div>
+    <hr>
   </div>
 
-  <div class="car-details">
+  <div class="car-details" ng-show="visible">
     <div class="row">
       <div class="col-md-3">
-        <p><b>Placa:</b><label ng-model="car.plate"></label></p>
+        <p><b>Placa:</b><label>{{car.plate}}</label></p>
       </div>
       <div class="col-md-3">
-        <p><b>Modelo:</b><label ng-model="car.model"></label></p>
+        <p><b>Modelo:</b><label>{{car.model}}</label></p>
       </div>
       <div class="col-md-3">
-        <p><b>Cor:</b><label ng-model="car.color"></label></p>
+        <p><b>Cor:</b><label>{{car.color}}</label></p>
       </div>
       <div class="col-md-3">
-        <p><b>Proprietario:</b><label ng-model="car.owner"></label></p>
+        <p><b>Proprietario:</b><label>{{car.owner}}</label></p>
       </div>
     </div>
     <div class="row">
