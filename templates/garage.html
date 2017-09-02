@@ -8,10 +8,34 @@
     <div class="col-md-2">
       <select class="form-control" name="">
         <option value="">Selecione...</option>
+        <option ng-repeat="c in cars" value="c.id">{{c.plate}}</option>
       </select>
     </div>
     <div class="col-md-2">
       <a href="#" class="btn btn-default">Pesquisar</a>
+    </div>
+  </div>
+
+  <div class="car-details">
+    <div class="row">
+      <div class="col-md-3">
+        <p><b>Placa:</b><label ng-model="car.plate"></label></p>
+      </div>
+      <div class="col-md-3">
+        <p><b>Modelo:</b><label ng-model="car.model"></label></p>
+      </div>
+      <div class="col-md-3">
+        <p><b>Cor:</b><label ng-model="car.color"></label></p>
+      </div>
+      <div class="col-md-3">
+        <p><b>Proprietario:</b><label ng-model="car.owner"></label></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <a href="#" class="form-control btn btn-primary">Estacionar</a>
+      </div>
+
     </div>
   </div>
 

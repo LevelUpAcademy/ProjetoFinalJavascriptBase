@@ -1,6 +1,6 @@
 var app = angular.module('garage')
 
-app.controller('GarageController', function($scope){
+app.controller('GarageController', function($scope, $http){
   $scope.cars = []
   $http.get('https://aulasjavascript.herokuapp.com/cars')
   .then(function(cars){
