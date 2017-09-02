@@ -14,7 +14,6 @@
     <div class="col-md-2">
       <a ng-click="Search()" class="btn btn-default">Pesquisar</a>
     </div>
-    <hr>
   </div>
 
   <div class="car-details" ng-show="visible">
@@ -33,11 +32,40 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-12">
-        <a href="#" class="form-control btn btn-primary">Estacionar</a>
-      </div>
-
+      Valor/hora: <input type="number" ng-model="valueHour">
     </div>
+    <div class="row">
+      <div class="col-md-12">
+        <a ng-click="Park()" class="form-control btn btn-primary">Estacionar</a>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="parked-cars row">
+    <h2>Carros na Garagem</h2>
+    <a ng-click="CalcValue()">Atualizar valores</a>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Placa</th>
+          <th>Entrada hora</th>
+          <th>Entrada dia</th>
+          <th>Valor/hora</th>
+          <th>Valor</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="pc in parkedCars">
+          <td>{{pc.car.plate}}</td>
+          <td>{{pc.in | date: 'HH:mm'}}</td>
+          <td>{{pc.in | date: 'dd/MM/yy'}}</td>
+          <td>{{pc.hourValue}}</td>
+          <td>R$ {{pc.value}}</td>
+        </tr>
+      </tbody>
+
+    </table>
   </div>
 
 </div>
