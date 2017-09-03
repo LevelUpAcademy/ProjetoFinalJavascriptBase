@@ -7,8 +7,7 @@
     </div>
     <div class="col-md-2">
       <select ng-model="selectedCar" class="form-control" name="">
-        <option value="-1">Selecione...</option>
-        <option ng-repeat="c in cars" value="{{c.id}}">{{c.plate}}</option>
+        <option ng-repeat="c in cars" value="{{c.$id}}">{{c.plate}}</option>
       </select>
     </div>
     <div class="col-md-2">

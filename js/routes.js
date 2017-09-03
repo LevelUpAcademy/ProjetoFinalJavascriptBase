@@ -23,6 +23,10 @@ app.config(function($routeProvider, $locationProvider) {
       templateUrl: 'templates/editcar.html',
       controller: 'CarsEditController'
     })
+    .when('/login', {
+      templateUrl: 'templates/login.html',
+      controller: 'LoginController'
+    })
     .otherwise({
       redirectTo: '/carros'
     });

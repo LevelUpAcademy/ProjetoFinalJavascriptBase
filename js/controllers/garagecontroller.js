@@ -1,27 +1,21 @@
 var app = angular.module('garage')
 
-app.controller('GarageController', function($scope, $http){
+app.controller('GarageController', function($scope, $http, $firebaseArray, $firebaseObject){
   $scope.car = {}
   $scope.cars = []
   $scope.parkedCars = []
   $scope.visible = false
 
-  $http.get('https://aulasjavascript.herokuapp.com/cars')
-  .then(function(cars){
-    $scope.cars = cars.data
-    },
-  function(err){
-    console.log(err)
-  })
+  var ref = firebase.database().ref("cars")
+  $scope.cars = $firebaseArray(ref)
 
   $scope.Search = function(){
-    $http.get('https://aulasjavascript.herokuapp.com/cars/' + $scope.selectedCar)
-    .then(function(car){
-        $scope.car = car.data
-        $scope.visible = true
-      },
-    function(err){
-      console.log(err)
+    $scope.car = {}
+    var ref = firebase.database().ref('cars/' + $scope.selectedCar).once('value').then(function(data){
+      $scope.car = data.val()
+      console.log($scope.car)
+      $scope.visible = true
+      $scope.$apply();
     })
   }
 
