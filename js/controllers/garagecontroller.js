@@ -9,6 +9,9 @@ app.controller('GarageController', function($scope, $http, $firebaseArray, $fire
   var ref = firebase.database().ref("cars")
   $scope.cars = $firebaseArray(ref)
 
+  var refParkedCars = firebase.database().ref("parkedCars")
+  $scope.parkedCars = $firebaseArray(refParkedCars)
+
   $scope.Search = function(){
     $scope.car = {}
     var ref = firebase.database().ref('cars/' + $scope.selectedCar).once('value').then(function(data){
@@ -22,13 +25,13 @@ app.controller('GarageController', function($scope, $http, $firebaseArray, $fire
   $scope.Park = function(){
     var carToPark = {
       car: $scope.car,
-      in: new Date(),
       value: 0.0,
       hourValue: $scope.valueHour
     }
 
-
-    $scope.parkedCars.push(carToPark)
+    var refParked = firebase.database().ref("parkedCars")
+    var parkedCars = $firebaseArray(refParked);
+    parkedCars.$add(carToPark)
     $scope.visible = false
   }
 

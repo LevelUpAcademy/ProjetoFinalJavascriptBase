@@ -48,8 +48,6 @@
       <thead>
         <tr>
           <th>Placa</th>
-          <th>Entrada hora</th>
-          <th>Entrada dia</th>
           <th>Valor/hora</th>
           <th>Valor</th>
         </tr>
@@ -57,8 +55,6 @@
       <tbody>
         <tr ng-repeat="pc in parkedCars">
           <td>{{pc.car.plate}}</td>
-          <td>{{pc.in | date: 'HH:mm'}}</td>
-          <td>{{pc.in | date: 'dd/MM/yy'}}</td>
           <td>{{pc.hourValue}}</td>
           <td>R$ {{pc.value}}</td>
         </tr>
