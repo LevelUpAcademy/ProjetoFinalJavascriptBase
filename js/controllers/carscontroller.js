@@ -1,4 +1,5 @@
   var app = angular.module('garage')
+
   app.controller('CarsController', function($scope, $firebaseObject, $firebaseArray){
 
     $scope.cars = []
@@ -6,13 +7,14 @@
 
     var ref = firebase.database().ref("cars")
     $scope.cars = $firebaseArray(ref)
+
     $scope.message = ""
 
     $scope.Delete = function(id){
       console.log(id)
       $scope.cars.$remove(id)
-
-      $scope.cars = $firebaseObject(ref)
+      //$scope.cars = $firebaseObject(ref)
+      //$scope.cars.$remove($scope.cars.$indexFor(id));
     }
   })
 
@@ -28,11 +30,13 @@
 
   app.controller('CarsDetailsController', function($scope, $http, $routeParams, $firebaseArray){
     $scope.car = {}
-    var ref = firebase.database().ref('cars/' + $routeParams.xpto).once('value').then(function(data){
-      $scope.car = data.val()
-      console.log($scope.car)
-      $scope.$apply();
-    })
+    var ref = firebase.database().ref('cars/' + $routeParams.xpto)
+      .once('value')
+      .then(function(data){
+        $scope.car = data.val()
+        console.log($scope.car)
+        $scope.$apply();
+      })
   })
 
   app.controller('CarsEditController', function($http, $scope, $routeParams, $firebaseArray){

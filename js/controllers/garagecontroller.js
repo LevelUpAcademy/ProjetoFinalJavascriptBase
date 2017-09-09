@@ -1,6 +1,6 @@
 var app = angular.module('garage')
 
-app.controller('GarageController', function($scope, $http, $firebaseArray, $firebaseObject){
+app.controller('GarageController', function($scope, $firebaseArray, $firebaseObject){
   $scope.car = {}
   $scope.cars = []
   $scope.parkedCars = []

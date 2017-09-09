@@ -1,7 +1,7 @@
 var app = angular.module('garage')
 
 app.config(function($routeProvider, $locationProvider) {
-
+  //$locationProvider.html5Mode(true).hashPrefix('*');
   $routeProvider
     .when('/garagem', {
       templateUrl: 'templates/garage.html',
