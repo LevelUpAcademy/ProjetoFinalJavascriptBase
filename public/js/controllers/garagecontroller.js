@@ -16,23 +16,28 @@ app.controller('GarageController', function($scope, $firebaseArray, $firebaseObj
     $scope.car = {}
     var ref = firebase.database().ref('cars/' + $scope.selectedCar).once('value').then(function(data){
       $scope.car = data.val()
-      console.log($scope.car)
       $scope.visible = true
       $scope.$apply();
     })
   }
 
   $scope.Park = function(){
+    var d = new Date()
     var carToPark = {
       car: $scope.car,
       value: 0.0,
-      hourValue: $scope.valueHour
+      hourValue: $scope.valueHour,
+      inTime: d.toLocaleString()
     }
 
     var refParked = firebase.database().ref("parkedCars")
     var parkedCars = $firebaseArray(refParked);
     parkedCars.$add(carToPark)
     $scope.visible = false
+  }
+
+  $scope.Leave = function(){
+    console.log(this.pc.$id)
   }
 
   $scope.CalcValue = function(){
@@ -50,4 +55,33 @@ app.controller('GarageController', function($scope, $firebaseArray, $firebaseObj
     var minutes = Math.floor(millis / 60000);
     return minutes
   }
+})
+
+app.controller('CheckoutController', function($scope, $routeParams, $firebaseArray, $firebaseObject){
+
+  $scope.parkedCar = {}
+  var ref = firebase.database().ref('parkedCars/' + $routeParams.id)
+    .once('value')
+    .then(function(data){
+      $scope.parkedCar = data.val()
+      $scope.leaveTime = new Date().toLocaleString()
+
+      $scope.totalValue = 0
+
+      var valorHora = $scope.parkedCar.hourValue
+      var diffMs = (new Date() - new Date($scope.parkedCar.inTime));
+      var fiffMins = Math.round(((diffMs % 86400000) % 3600000) / 60000)
+
+      var minValue = valorHora / 60
+
+
+      $scope.totalValue = (fiffMins * minValue).toFixed(2)
+
+      $scope.$apply();
+    })
+
+    $scope.Leave = function(){
+      firebase.database().ref('parkedCars/' + $routeParams.id).set(null);
+      window.location.href = '/#!/garagem'
+    }
 })

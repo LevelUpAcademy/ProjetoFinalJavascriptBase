@@ -23,6 +23,10 @@ app.config(function($routeProvider, $locationProvider) {
       templateUrl: 'templates/editcar.html',
       controller: 'CarsEditController'
     })
+    .when('/checkout/:id', {
+      templateUrl: 'templates/checkout.html',
+      controller: 'CheckoutController'
+    })
     .when('/login', {
       templateUrl: 'templates/login.html',
       controller: 'LoginController'
