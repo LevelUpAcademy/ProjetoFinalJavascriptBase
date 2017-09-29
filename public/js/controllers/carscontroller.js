@@ -10,11 +10,9 @@
 
     $scope.message = ""
 
-    $scope.Delete = function(id){
-      console.log(id)
-      $scope.cars.$remove(id)
-      //$scope.cars = $firebaseObject(ref)
-      //$scope.cars.$remove($scope.cars.$indexFor(id));
+    $scope.Delete = function(){
+      firebase.database().ref('cars/' + this.car.$id).set(null);
+      window.location.href = '/#!/carros'
     }
   })
 
@@ -34,7 +32,6 @@
       .once('value')
       .then(function(data){
         $scope.car = data.val()
-        console.log($scope.car)
         $scope.$apply();
       })
   })

@@ -1,0 +1,119 @@
+<div class="container">
+  <h1>Confirmação de saida de veiculo</h1>
+  <hr>
+
+  <h2>Dados do veículo</h2>
+  <div class="col-md-6">
+    <div class="form-group">
+      <label for="" class="form-label">
+        Placa
+      </label>
+      <span class="form-control">
+        {{parkedCar.car.plate}}
+      </span>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="form-group">
+      <label for="" class="form-label">
+        Modelo
+      </label>
+      <span class="form-control">
+        {{parkedCar.car.model}}
+      </span>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="form-group">
+      <label for="" class="form-label">
+        Cor
+      </label>
+      <span class="form-control">
+        {{parkedCar.car.color}}
+      </span>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="form-group">
+      <label for="" class="form-label">
+        Proprietario
+      </label>
+      <span class="form-control">
+        {{parkedCar.car.owner}}
+      </span>
+    </div>
+  </div>
+  <br>
+  <br>
+  <h2>Dados financeiros</h2>
+  <hr>
+  <div class="col-md-6">
+    <div class="form-group">
+      <label for="" class="form-label">
+        Hora de entrada
+      </label>
+      <span class="form-control">
+        {{parkedCar.inTime}}
+      </span>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="form-group">
+      <label for="" class="form-label">
+        Hora de saida
+      </label>
+      <span class="form-control">
+        {{leaveTime}}
+      </span>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="form-group">
+      <label for="" class="form-label">
+        Valor/hora
+      </label>
+      <span class="form-control">
+        R$ {{parkedCar.hourValue}}
+      </span>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="form-group">
+      <label for="" class="form-label">
+        Valor a pagar
+      </label>
+      <span class="form-control">
+        R$ {{totalValue}}
+      </span>
+    </div>
+  </div>
+  <br>
+  <br>
+  <h2>Pagamento</h2>
+  <hr>
+  <div class="col-md-6">
+    <div class="form-group">
+      <label for="" class="form-label">
+        Dinheiro
+      </label>
+      <input type="number" ng-model="payment" class="form-control">
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="form-group">
+      <label for="" class="form-label">
+        Troco
+      </label>
+      <span ng-if="payment > 0" class="form-control">
+        R$ {{payment - totalValue}}
+      </span>
+    </div>
+  </div>
+  <div class="col-md-12" ng-if="payment > 0">
+    <a class="btn btn-primary" ng-click="Leave()">Finalizar saida</a>
+  </div>
+<br>
+<br>
+<br>
+<br>
+</div>
