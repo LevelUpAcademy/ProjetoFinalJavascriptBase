@@ -105,7 +105,7 @@
         Troco
       </label>
       <span ng-if="payment > 0" class="form-control">
-        R$ {{payment - totalValue}}
+        R$ {{(payment - totalValue).toFixed(2)}}
       </span>
     </div>
   </div>

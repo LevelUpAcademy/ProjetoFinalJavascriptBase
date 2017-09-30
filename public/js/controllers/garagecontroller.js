@@ -70,12 +70,12 @@ app.controller('CheckoutController', function($scope, $routeParams, $firebaseArr
 
       var valorHora = $scope.parkedCar.hourValue
       var diffMs = (new Date() - new Date($scope.parkedCar.inTime));
-      var fiffMins = Math.round(((diffMs % 86400000) % 3600000) / 60000)
-
+      //var diffMins = Math.round(((diffMs % 86400000) % 3600000) / 60000)
+      var diffMins = Math.floor((diffMs/1000)/60);
       var minValue = valorHora / 60
 
 
-      $scope.totalValue = (fiffMins * minValue).toFixed(2)
+      $scope.totalValue = (diffMins * minValue).toFixed(2)
 
       $scope.$apply();
     })
