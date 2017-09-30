@@ -109,7 +109,10 @@
       </span>
     </div>
   </div>
-  <div class="col-md-12" ng-if="payment > 0">
+  <div class="col-md-12" ng-if="payment < totalValue">
+    <span class="warning">O valor é menor do que o total</span>
+  </div>
+  <div class="col-md-12" ng-if="payment > 0 && payment < totalValue">
     <a class="btn btn-primary" ng-click="Leave()">Finalizar saida</a>
   </div>
 <br>
