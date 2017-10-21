@@ -27,7 +27,8 @@ app.controller('GarageController', function($scope, $firebaseArray, $firebaseObj
       car: $scope.car,
       value: 0.0,
       hourValue: $scope.valueHour,
-      inTime: d.toLocaleString()
+      inTime: d.toLocaleString(),
+      user_id: firebase.auth().currentUser.uid
     }
 
     var refParked = firebase.database().ref("parkedCars")

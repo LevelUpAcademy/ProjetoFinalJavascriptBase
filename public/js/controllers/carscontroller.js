@@ -19,10 +19,15 @@
   app.controller('CarsNewController', function($scope, $http, $firebaseObject, $firebaseArray){
 
     $scope.SaveCar = function(){
-      var ref = firebase.database().ref("cars")
-      var cars = $firebaseArray(ref);
-      cars.$add($scope.obj.car)
-      window.location.href = '/#!/carros'
+
+      var storageRef = firebase.storage().ref('garagem/' + $scope.obj.car.plate);
+      var newCarRef = storageRef.child('foto.jpg');
+      newCarRef.put($scope.obj.car.foto).then(function(data) {
+        var ref = firebase.database().ref("cars")
+        var cars = $firebaseArray(ref);
+        cars.$add($scope.obj.car)
+        window.location.href = '/#!/carros'
+      });
     }
   })
 

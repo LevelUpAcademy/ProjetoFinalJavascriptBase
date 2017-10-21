@@ -2,35 +2,35 @@ var app = angular.module('garage')
 
 app.controller('LoginController', [
   '$scope', '$rootScope', '$firebaseAuth', function($scope, $rootScope, $firebaseAuth) {
-    var ref = new Firebase('https://angularfireauth.firebaseio.com/');
-    $rootScope.auth = $firebaseAuth(ref);
 
     $scope.signIn = function () {
-      $rootScope.auth.$login('password', {
-        email: $scope.email,
-        password: $scope.password
-      }).then(function(user) {
-        $rootScope.alert.message = '';
-      }, function(error) {
-        if (error = 'INVALID_EMAIL') {
-          console.log('email invalid or not signed up — trying to sign you up!');
-          $scope.signUp();
-        } else if (error = 'INVALID_PASSWORD') {
-          console.log('wrong password!');
-        } else {
-          console.log(error);
-        }
-      });
-    }
 
-    $scope.signUp = function() {
-      $rootScope.auth.$createUser($scope.email, $scope.password, function(error, user) {
-        if (!error) {
-          $rootScope.alert.message = '';
-        } else {
-          $rootScope.alert.class = 'danger';
-          $rootScope.alert.message = 'The username and password combination you entered is invalid.';
-        }
+      var provider = new firebase.auth.FacebookAuthProvider();
+      provider.addScope('user_birthday');
+      provider.setCustomParameters({
+        'display': 'popup'
+      });
+
+
+      firebase.auth().signInWithPopup(provider).then(function(result) {
+        // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+        var token = result.credential.accessToken;
+        // The signed-in user info.
+        var user = result.user;
+        $scope.user = user;
+        $scope.$apply();
+
+        console.log(user)
+      }).catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // The email of the user's account used.
+        var email = error.email;
+        // The firebase.auth.AuthCredential type that was used.
+        var credential = error.credential;
+
+        console.log(error);
       });
     }
   }

@@ -6,6 +6,13 @@
 
 <!-- <pre>{{obj}}</pre> -->
 <div class="form-group">
+  <label for="" class="form-label">Foto</label>
+  <input type="file" ng-model="obj.car.foto" bind-file="obj.car.foto" class="form-control">
+</div>
+
+<pre>{{obj.car}}</pre>
+
+<div class="form-group">
   <label for="" class="form-label">Placa</label>
   <input type="text" ng-model="obj.car.plate" class="form-control">
 </div>
