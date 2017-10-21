@@ -21,8 +21,10 @@
     $scope.SaveCar = function(){
 
       var storageRef = firebase.storage().ref('garagem/' + $scope.obj.car.plate);
-      var newCarRef = storageRef.child('foto.jpg');
+      debugger;
+      var newCarRef = storageRef.child($scope.obj.car.foto.name);
       newCarRef.put($scope.obj.car.foto).then(function(data) {
+        console.log(data)
         var ref = firebase.database().ref("cars")
         var cars = $firebaseArray(ref);
         cars.$add($scope.obj.car)
